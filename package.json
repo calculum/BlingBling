@@ -1,0 +1,23 @@
+{
+  "name": "blingbling",
+  "version": "1.0.0",
+  "description": "CapStone project 3rd for personal note and event record.",
+  "main": "server.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/calculum/BlingBling.git"
+  },
+  "author": "Bo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/calculum/BlingBling/issues"
+  },
+  "homepage": "https://github.com/calculum/BlingBling#readme"
+}
