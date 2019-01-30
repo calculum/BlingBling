@@ -21,7 +21,8 @@
   },
   "homepage": "https://github.com/calculum/BlingBling#readme",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "heroku": "^7.19.4"
   },
   "devDependencies": {
     "chai": "^4.2.0",

@@ -6,4 +6,4 @@ deploy:
     secure: <YOUR ENCRYPTED KEY HERE>
   app: <YOUR APP NAME HERE>
   on:
-    repo: <YOUR REPO INFO HERE>
+    repo: https://github.com/calculum/BlingBling.git
