@@ -4,9 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Hi blingbling</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css">
+    <script src="index.js"></script>
+    <title>blingbling - when some ideas or note comes to mind.</title>
 </head>
 <body>
-    
+    <div class="container">
+        <header>
+          <h1>All the lists</h1>
+        </header>
+        <main>
+          <section>
+            <h2>Shopping list</h2>
+            <form id="js-shopping-list-form">
+              <label for="shopping-list-entry">Add an item</label>
+              <input type="text" name="shopping-list-entry" id="js-new-item" placeholder="e.g., broccoli">
+              <button type="submit">Add item</button>
+            </form>
+  
+            <ul class="shopping-list js-shopping-list">
+            </ul>
+          </section>
+          <hr>
+          <section>
+            <h2>Recipes</h2>
+            <form id="js-recipe-form">
+              <div>
+                <label for="recipe-name">Recipe name</label>
+                <input type="text" name="recipe-name" id="recipe-name" placeholder="e.g., smoothie">
+              </div>
+              <div>
+                <label for="ingredients-list">Ingredients</label>
+                <input type="text" name="ingredients-list" id="ingredients-list", placeholder="yogurt, orange juice, strawberries, banana, peanut butter">
+              </div>
+              <button type="submit">Add recipe</button>
+            </form>
+  
+            <ul class="recipes js-recipes">
+            </ul>
+          </section>
+        </main>
+      </div>
 </body>
 </html>
