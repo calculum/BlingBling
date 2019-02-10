@@ -4,6 +4,6 @@ deploy:
   provider: heroku
   api_key:
     secure: 6644f6fa-b6b3-4b64-9046-83b284502ce4
-  app: <YOUR APP NAME HERE>
+  app: BlingBling
   on:
     repo: https://github.com/calculum/BlingBling.git
