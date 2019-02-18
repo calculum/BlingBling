@@ -2,13 +2,13 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 
-app.use(express.static('public'));
 
 const { DATABASE_URL, PORT } = require('./config');
 
 // log the http layer
 app.use(morgan('common'));
 
+app.use(express.static('public'));
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/public/index.html');
