@@ -2,7 +2,7 @@
 
 var mongoose = require('mongoose');
 
-var eventSchema = new mongoose.Schema({
+var blingSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true
@@ -22,6 +22,6 @@ var eventSchema = new mongoose.Schema({
 
 });
 
-var Events = mongoose.model('Event', eventSchema);
+var Blings = mongoose.model('Bling', blingSchema);
 
-module.exports = Events;
+module.exports = Blings;
