@@ -5,7 +5,7 @@ var bcrypt = require('bcryptjs');
 
 mongoose.Promise = global.Promise;
 
-const UserSchema = mongoose.Schema({
+const userSchema = mongoose.Schema({
     usernamne: {
         type: String,
         require: ture
@@ -27,6 +27,6 @@ UserSchema.methods.validatePassword = function(password, callback) {
     });
 };
 
-const User = mongoose.model('User', UserSchema);
+const User = mongoose.model('User', userSchema);
 
 module.exports = User;

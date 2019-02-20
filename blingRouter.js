@@ -51,7 +51,8 @@ router.post('/', (req, res) => {
   } else {
     const newUser = {
       title: req.body.title,
-      bling: req.body.bling,
+      detail: req.body.detail,
+
     };
     new bling(newUser).save().then(bling => {
       res.redirect('/bling');
@@ -63,10 +64,12 @@ router.post('/', (req, res) => {
 router.put('/:id', (req, res) => {
   Blings.findOne({
     _id: req.params.id
-  }).then(idea => {
+  }).then(bling => {
     // new values
     bling.title = req.body.title;
+    bling.date = req.body.date;
     bling.detail = req.body.detail;
+    
 
     bling.save().then(bling => {
       res.redirect('/bling');
