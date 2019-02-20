@@ -4,15 +4,15 @@ const router = express.Router();
 
 // Load Models
 require('../models/bling');
-const Events = mongoose.model('Bling');
+const Blings = mongoose.model('Bling');
 
-// Event index page
+// Bling index page
 router.get('/', (req, res) => {
       res.render('/index');
     });
 
 
-// Add Event Form
+// Add bling Form
 router.get('/add', (req, res) => {
   res.render('bling/add');
 });

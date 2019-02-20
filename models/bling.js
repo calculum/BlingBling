@@ -2,7 +2,7 @@
 
 var mongoose = require('mongoose');
 
-var blingSchema = new mongoose.Schema({
+const blingSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true
@@ -22,6 +22,6 @@ var blingSchema = new mongoose.Schema({
 
 });
 
-var Blings = mongoose.model('Bling', blingSchema);
+const Blings = mongoose.model('Bling', blingSchema);
 
 module.exports = Blings;
