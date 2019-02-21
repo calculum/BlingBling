@@ -13,7 +13,7 @@ const blingSchema = new mongoose.Schema({
     },
     date: {
         type: Date,
-        required: true
+        default: Date.now
     },
     detail: {
         type: String,

@@ -17,15 +17,6 @@ const userSchema = mongoose.Schema({
     }
 });
 
-UserSchema.methods.validatePassword = function(password, callback) {
-    bcrypt.compare(password, this.password, function(err, isValid) {
-        if(err) {
-            callback(err);
-            return;
-        }
-        callback(null,isValid);
-    });
-};
 
 const User = mongoose.model('User', userSchema);
 
