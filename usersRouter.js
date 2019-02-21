@@ -22,7 +22,7 @@ router.get('/register', (req, res) => {
 // Login Form POST
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', {
-    successRedirect: '/ideas',
+    successRedirect: '/panel',
     failureRedirect: '/users/login',
     failureFlash: true
   })(req, res, next);
@@ -41,7 +41,6 @@ router.post('/register', (req, res) => {
   if (errors.length > 0) {
     res.render('users/register', {
       errors,
-      name: req.body.name,
       email: req.body.email,
       password: req.body.password,
       password2: req.body.password2
@@ -49,11 +48,10 @@ router.post('/register', (req, res) => {
   } else {
     User.findOne({ email: req.body.email }).then(user => {
       if (user) {
-        req.flash('error_msg', 'Email already in use.');
+        req.send('error_msg', 'Email already in use.');
         res.redirect('/users/register');
       } else {
         const newUser = new User({
-          name: req.body.name,
           email: req.body.email,
           password: req.body.password
         });
@@ -64,7 +62,7 @@ router.post('/register', (req, res) => {
             newUser
               .save()
               .then(user => {
-                req.flash('success_msg', 'Success! Please login below.');
+                req.send('success_msg', 'Success! Please login below.');
                 res.redirect('/users/login');
               })
               .catch(err => {
@@ -81,7 +79,7 @@ router.post('/register', (req, res) => {
 // Logout User
 router.get('/logout', (req, res) => {
   req.logout();
-  req.flash('success_msg', 'You are logged out.');
+  req.sent('success_msg', 'You are logged out.');
   res.redirect('/users/login');
 });
 

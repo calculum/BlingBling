@@ -39,8 +39,8 @@ router.post('/', (req, res) => {
   if (!req.body.title) {
     errors.push({ text: 'Please add a title' });
   }
-  if (!req.body.bling) {
-    errors.push({ text: 'Please enter a bling' });
+  if (!req.body.detail) {
+    errors.push({ text: 'Please enter what in your mind....' });
   }
   if (errors.length > 0) {
     res.render('bling/add', {
@@ -70,14 +70,13 @@ router.put('/:id', (req, res) => {
     bling.date = req.body.date;
     bling.detail = req.body.detail;
     
-
     bling.save().then(bling => {
       res.redirect('/bling');
     });
   });
 });
 
-// Delete Idea
+// Delete a bling
 router.delete('/:id', (req, res) => {
   Blings.deleteOne({ _id: req.params.id }).then(() => {
     res.redirect('/bling');

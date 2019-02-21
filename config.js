@@ -2,8 +2,8 @@
 
 exports.DATABASE_URL =
   process.env.DATABASE_URL ||
-  'mongodb://donna:fr3dd13Cat@ds159772.mlab.com:59772/storycrumb-prod';
+  'mongodb://dbuser:dbpass1@ds113815.mlab.com:13815/cid-with-mongoose';
 exports.TEST_DATABASE_URL =
   process.env.TEST_DATABASE_URL ||
-  'mongodb://donna:test123@ds155252.mlab.com:55252/story-crumb';
+  '#';
 exports.PORT = process.env.PORT || 5000;
