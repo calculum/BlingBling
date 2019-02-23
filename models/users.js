@@ -8,12 +8,12 @@ mongoose.Promise = global.Promise;
 const userSchema = mongoose.Schema({
     usernamne: {
         type: String,
-        require: ture
+        require: true
     },
 
     password: {
         type: String,
-        require: ture
+        require: true
     }
 });
 

@@ -1,8 +1,11 @@
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
+const mongoose = require('mongoose');
 
 
+const  usersRouter  = require('./models/users');
+const  blingRouter  = require('./models/bling');
 const { DATABASE_URL, PORT } = require('./config');
 
 // CORS

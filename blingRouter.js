@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const router = express.Router();
 
 // Load Models
-require('../models/bling');
+
 const Blings = mongoose.model('Bling');
 
 // Bling index page

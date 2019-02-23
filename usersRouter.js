@@ -2,21 +2,19 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
-
 const router = express.Router();
 
 // Load User Model
-require('../models/users');
-const User = mongoose.model('User');
+ User = mongoose.model('User');
 
 // User Login Route
 router.get('/login', (req, res) => {
-  res.render('users/login');
+  res.render('./views/panel');
 });
 
 // User Register Route
 router.get('/register', (req, res) => {
-  res.render('users/register');
+  res.render('./views/panel');
 });
 
 // Login Form POST
