@@ -24,4 +24,4 @@ const blingSchema = new mongoose.Schema({
 
 const Blings = mongoose.model('Bling', blingSchema);
 
-module.exports = Blings;
+module.exports = { Blings };
