@@ -40,11 +40,17 @@ app.use(morgan('common'));
 
 app.use(express.static('public'));
 
+
+// -------------------Routes----------------
 app.get('/', (req, res) => {
   const title = 'BlingBling';
   res.render('index', {
     title
   });
+});
+
+app.get('/about', (req, res) => {
+  res.render('about');
 });
 
 app.use('/user', UsersRouter);

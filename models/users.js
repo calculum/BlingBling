@@ -1,7 +1,6 @@
 "use strict"
 
 var mongoose = require('mongoose');
-var bcrypt = require('bcryptjs');
 
 mongoose.Promise = global.Promise;
 

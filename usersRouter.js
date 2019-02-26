@@ -5,22 +5,23 @@ const passport = require('passport');
 const router = express.Router();
 
 // Load User Model
+require('./models/users')
  User = mongoose.model('User');
 
 // User Login Route
 router.get('/login', (req, res) => {
-  res.render('./views/login');
+  res.render('users/login');
 });
 
 // User Register Route
 router.get('/register', (req, res) => {
-  res.render('./views/register');
+  res.render('users/register');
 });
 
 // Login Form POST
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', {
-    successRedirect: '/panel',
+    successRedirect: '/blings',
     failureRedirect: '/users/login',
     failureFlash: true
   })(req, res, next);
