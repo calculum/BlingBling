@@ -1,15 +1,15 @@
 <div class="card card-body">
   <h3>Edit</h3>
-  <form action="/blings/{{idea.id}}?_method=PUT" method="post">
+  <form action="/blings/{{bling.id}}?_method=PUT" method="post">
     <input type="hidden" name="_method" value="PUT">
     <div class="form-group">
       <label for="title">Title</label>
-      <input type="text" class="form-control" name="title" value="{{idea.title}}" required>
+      <input type="text" class="form-control" name="title" value="{{bling.title}}" required>
     </div>
     <div class="form-group">
-      <label for="bling">Idea</label>
-      <textarea name="bling" class="form-control" value="{{idea.idea}}" required>{{idea.idea}}</textarea>
+      <label for="bling">Bling</label>
+      <textarea name="bling" class="form-control" value="{{bling.bling}}" required>{{bling.bling}}</textarea>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="">Submit</button>
   </form>
 </div>

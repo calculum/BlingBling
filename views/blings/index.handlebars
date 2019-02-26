@@ -2,10 +2,10 @@
 <div class="card card-body mb-2">
   <h3>{{title}}</h3>
   <p>{{bling}}</p>
-  <a href="/blings/edit/{{id}}" class="btn btn-dark btn-block mb-2">Edit</a>
+  <a href="/blings/edit/{{id}}" class="">Edit</a>
   <form action="/blings/{{id}}?_method=DELETE" method="POST">
     <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" class='btn btn-danger btn-block' value="Delete">
+    <input type="submit" class='' value="Delete">
   </form>
 </div>
 {{else}}
