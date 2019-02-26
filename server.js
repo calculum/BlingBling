@@ -1,14 +1,19 @@
 const express = require('express');
-const app = express();
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+const exphbs = require('express-handlebars');
+const passport = require('passport');
 
 
 const  usersRouter  = require('./models/users');
 const  blingRouter  = require('./models/bling');
+
+const app = express();
+
 const { DATABASE_URL, PORT } = require('./config');
 
-
+const BlingRouter = require('./blingRouter');
+const UsersRouter = require('./usersRouter');
 
 
 // CORS
@@ -36,11 +41,14 @@ app.use(morgan('common'));
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-  res.render('/views/index');
+  const title = 'BlingBling';
+  res.render('index', {
+    title
+  });
 });
 
-app.use('/user', usersRouter);
-app.use('/bling', blingRouter);
+app.use('/user', UsersRouter);
+app.use('/bling', BlingRouter);
 
 // Server Setup
 let server;
