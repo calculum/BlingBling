@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 
 // Add bling Form
 router.get('/add', (req, res) => {
-  res.render('bling/add');
+  res.render('blings/add');
 });
 
 // Edit Event Form
