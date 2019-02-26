@@ -9,12 +9,12 @@ const router = express.Router();
 
 // User Login Route
 router.get('/login', (req, res) => {
-  res.render('./views/panel');
+  res.render('./views/login');
 });
 
 // User Register Route
 router.get('/register', (req, res) => {
-  res.render('./views/panel');
+  res.render('./views/register');
 });
 
 // Login Form POST

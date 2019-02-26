@@ -8,6 +8,9 @@ const  usersRouter  = require('./models/users');
 const  blingRouter  = require('./models/bling');
 const { DATABASE_URL, PORT } = require('./config');
 
+
+
+
 // CORS
 app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
@@ -21,16 +24,22 @@ app.use(function(req, res, next) {
 
 mongoose.Promise = global.Promise;
 
+
+// Handlebars Middleware
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+app.set('view engine', 'handlebars');
+
+
 // log the http layer
 app.use(morgan('common'));
 
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/views/index.html');
+  res.render('/views/index');
 });
 
-app.use('/login', usersRouter);
+app.use('/user', usersRouter);
 app.use('/bling', blingRouter);
 
 // Server Setup

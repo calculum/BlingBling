@@ -8,7 +8,7 @@ const Blings = mongoose.model('Bling');
 
 // Bling index page
 router.get('/', (req, res) => {
-      res.render('/index');
+      res.render('views/index');
     });
 
 
@@ -26,7 +26,7 @@ router.get('/edit/:id', (req, res) => {
       req.flash('error_msg', 'Not Authorized.');
       res.redirect('/event');
     } else {
-      res.render('bling/edit', {
+      res.render('blings/edit', {
         bling
       });
     }
@@ -43,7 +43,7 @@ router.post('/', (req, res) => {
     errors.push({ text: 'Please enter what in your mind....' });
   }
   if (errors.length > 0) {
-    res.render('bling/add', {
+    res.render('blings/add', {
       errors,
       title: req.body.title,
       detail: req.body.detail
@@ -55,7 +55,7 @@ router.post('/', (req, res) => {
 
     };
     new bling(newUser).save().then(bling => {
-      res.redirect('/bling');
+      res.redirect('/blings');
     });
   }
 });
@@ -71,7 +71,7 @@ router.put('/:id', (req, res) => {
     bling.detail = req.body.detail;
     
     bling.save().then(bling => {
-      res.redirect('/bling');
+      res.redirect('/blings');
     });
   });
 });
@@ -79,7 +79,7 @@ router.put('/:id', (req, res) => {
 // Delete a bling
 router.delete('/:id', (req, res) => {
   Blings.deleteOne({ _id: req.params.id }).then(() => {
-    res.redirect('/bling');
+    res.redirect('/blings');
   });
 });
 
