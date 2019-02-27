@@ -1,8 +1,9 @@
 "use strict"
 
 var mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-const blingSchema = new mongoose.Schema({
+const BlingSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true
@@ -18,4 +19,4 @@ const blingSchema = new mongoose.Schema({
 
 });
 
-mongoose.model('Bling', blingSchema);
+mongoose.model('blings', BlingSchema);

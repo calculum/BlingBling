@@ -5,16 +5,16 @@ const passport = require('passport');
 
 const router = express.Router();
 
-// Load User Model
-// require('./models/users')
-const User = mongoose.model('User');
+//  User Model
+require('./models/Users')
+const User = mongoose.model('user');
 
-// User Login Route
+// Login Route
 router.get('/login', (req, res) => {
   res.render('users/login');
 });
 
-// User Register Route
+// Register Route
 router.get('/register', (req, res) => {
   res.render('users/register');
 });
@@ -32,7 +32,7 @@ router.post('/login', (req, res, next) => {
 router.post('/register', (req, res) => {
   let errors = [];
   if (req.body.password !== req.body.password2) {
-    errors.push({ text: 'Passwords do not match' });
+    errors.push({ text: 'Incorrect password!' });
   }
 
   if (req.body.password.length < 6) {
@@ -48,7 +48,7 @@ router.post('/register', (req, res) => {
   } else {
     User.findOne({ email: req.body.email }).then(user => {
       if (user) {
-        req.send('error_msg', 'Email already in use.');
+        req.send('error_msg', 'Email already exist.');
         res.redirect('/users/register');
       } else {
         const newUser = new User({
@@ -76,10 +76,10 @@ router.post('/register', (req, res) => {
   }
 });
 
-// Logout User
+// Logout 
 router.get('/logout', (req, res) => {
   req.logout();
-  req.sent('success_msg', 'You are logged out.');
+  req.sent('success_msg', 'See you next time.');
   res.redirect('/users/login');
 });
 

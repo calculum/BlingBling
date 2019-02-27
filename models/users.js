@@ -1,10 +1,9 @@
 "use strict"
 
 var mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-mongoose.Promise = global.Promise;
-
-const userSchema = mongoose.Schema({
+const UserSchema = mongoose.Schema({
     email: { 
         type: String, 
         required: true 
@@ -22,4 +21,4 @@ const userSchema = mongoose.Schema({
 });
 
 
-mongoose.model('User', userSchema);
+mongoose.model('user', UserSchema);

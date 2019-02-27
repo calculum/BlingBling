@@ -1,31 +1,33 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const router = express.Router();
+const { ensureAuthenticated } = require('./Authenticate/auth');
+
 
 // Load Models
-
-const Blings = mongoose.model('Bling');
+require('./models/Bling');
+const Bling = mongoose.model('bling');
 
 // Bling index page
-router.get('/', (req, res) => {
-  Idea.find({ user: req.user.id })
+router.get('/', ensureAuthenticated, (req, res) => {
+  Bling.find({ user: req.user.id })
     .sort({ date: 'desc' })
-    .then(bling => {
+    .then(blings => {
       res.render('blings/index', {
-        bling
+        blings
       });
     });
 });
 
 
-// Add bling Form
-router.get('/add', (req, res) => {
+// Add a bling Form
+router.get('/add', ensureAuthenticated, (req, res) => {
   res.render('blings/add');
 });
 
 // Edit Event Form
 router.get('/edit/:id', (req, res) => {
-  Blings.findOne({
+  Bling.findOne({
     _id: req.params.id
   }).then(bling => {
     if (bling.user != req.user.id) {
@@ -40,10 +42,10 @@ router.get('/edit/:id', (req, res) => {
 });
 
 // Process form
-router.post('/', (req, res) => {
+router.post('/', ensureAuthenticated, (req, res) => {
   let errors = [];
   if (!req.body.title) {
-    errors.push({ text: 'Please add a title' });
+    errors.push({ text: 'Mark it down...' });
   }
   if (!req.body.detail) {
     errors.push({ text: 'Please enter what in your mind....' });
@@ -66,7 +68,7 @@ router.post('/', (req, res) => {
   }
 });
 
-// Edit form process -- refactor to ajax request later
+// Edit form process -
 router.put('/:id', (req, res) => {
   Blings.findOne({
     _id: req.params.id

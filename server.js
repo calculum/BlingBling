@@ -3,10 +3,14 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const exphbs = require('express-handlebars');
 const passport = require('passport');
+const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
+const flash = require('connect-flash');
+const session = require('express-session');
 
 
-const  usersRouter  = require('./models/users');
-const  blingRouter  = require('./models/bling');
+// const  usersRouter  = require('./models/Users');
+// const  blingRouter  = require('./models/Bling');
 
 const app = express();
 
@@ -15,6 +19,7 @@ const { DATABASE_URL, PORT } = require('./config');
 const BlingRouter = require('./blingRouter');
 const UsersRouter = require('./usersRouter');
 
+require('./config/passport')(passport);
 
 // CORS
 app.use(function(req, res, next) {
@@ -27,18 +32,52 @@ app.use(function(req, res, next) {
   next();
 });
 
-mongoose.Promise = global.Promise;
 
 
 // Handlebars Middleware
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+
+app.use(methodOverride('_method'));
+
+// ----------Express-session
+const sess = {
+  secret: 'secret',
+  resave: true,
+  saveUninitialized: true
+};
+
+app.use(session(sess));
+//------------------------------
 
 // log the http layer
 app.use(morgan('common'));
 
 app.use(express.static('public'));
+
+
+//---------------Passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+//--------C-Flash
+app.use(flash());
+
+//-------Globe msg setting
+app.use((req, res, next) => {
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  res.locals.error = req.flash('error');
+  res.locals.user = req.user || null;
+  next();
+});
+
+
+mongoose.Promise = global.Promise;
 
 
 // -------------------Routes----------------
@@ -52,7 +91,7 @@ app.get('/', (req, res) => {
 app.get('/about', (req, res) => {
   res.render('about');
 });
-
+//-------------Routers
 app.use('/user', UsersRouter);
 app.use('/bling', BlingRouter);
 
@@ -70,7 +109,7 @@ function runServer(dbUrl = DATABASE_URL) {
         }
         server = app
           .listen(PORT, () => {
-            console.log(`All sytems go on port ${PORT}`);
+            console.log(`Listening on port ${PORT}`);
             resolve();
           })
           .on('error', err => {
