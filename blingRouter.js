@@ -8,8 +8,14 @@ const Blings = mongoose.model('Bling');
 
 // Bling index page
 router.get('/', (req, res) => {
-      res.render('views/index');
+  Idea.find({ user: req.user.id })
+    .sort({ date: 'desc' })
+    .then(bling => {
+      res.render('blings/index', {
+        bling
+      });
     });
+});
 
 
 // Add bling Form
@@ -24,7 +30,7 @@ router.get('/edit/:id', (req, res) => {
   }).then(bling => {
     if (bling.user != req.user.id) {
       req.flash('error_msg', 'Not Authorized.');
-      res.redirect('/event');
+      res.redirect('/blings');
     } else {
       res.render('blings/edit', {
         bling
@@ -52,7 +58,7 @@ router.post('/', (req, res) => {
     const newUser = {
       title: req.body.title,
       detail: req.body.detail,
-
+      user: req.user.id
     };
     new bling(newUser).save().then(bling => {
       res.redirect('/blings');

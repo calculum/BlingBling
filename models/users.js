@@ -5,6 +5,11 @@ var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 const userSchema = mongoose.Schema({
+    email: { 
+        type: String, 
+        required: true 
+    },
+
     usernamne: {
         type: String,
         require: true
@@ -17,6 +22,4 @@ const userSchema = mongoose.Schema({
 });
 
 
-const User = mongoose.model('User', userSchema);
-
-module.exports = { User };
+mongoose.model('User', userSchema);

@@ -7,10 +7,6 @@ const blingSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    location: {
-        type: String,
-        required: false
-    },
     date: {
         type: Date,
         default: Date.now
@@ -22,6 +18,4 @@ const blingSchema = new mongoose.Schema({
 
 });
 
-const Blings = mongoose.model('Bling', blingSchema);
-
-module.exports = { Blings };
+= mongoose.model('Bling', blingSchema);

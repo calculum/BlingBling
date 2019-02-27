@@ -7,7 +7,7 @@ const router = express.Router();
 
 // Load User Model
 require('./models/users')
- User = mongoose.model('User');
+const User = mongoose.model('User');
 
 // User Login Route
 router.get('/login', (req, res) => {
