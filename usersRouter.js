@@ -6,7 +6,7 @@ const passport = require('passport');
 const router = express.Router();
 
 // Load User Model
-require('./models/users')
+// require('./models/users')
 const User = mongoose.model('User');
 
 // User Login Route

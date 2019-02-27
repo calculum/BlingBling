@@ -18,4 +18,4 @@ const blingSchema = new mongoose.Schema({
 
 });
 
-= mongoose.model('Bling', blingSchema);
+mongoose.model('Bling', blingSchema);
