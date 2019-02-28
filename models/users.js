@@ -1,7 +1,6 @@
 "use strict"
 
 var mongoose = require('mongoose');
-const Schema = mongoose.Schema;
 
 const UserSchema = mongoose.Schema({
     email: { 
@@ -21,4 +20,4 @@ const UserSchema = mongoose.Schema({
 });
 
 
-mongoose.model('user', UserSchema);
+mongoose.model('users', UserSchema);

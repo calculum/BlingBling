@@ -1,7 +1,6 @@
 "use strict"
 
 var mongoose = require('mongoose');
-const Schema = mongoose.Schema;
 
 const BlingSchema = new mongoose.Schema({
     title: {

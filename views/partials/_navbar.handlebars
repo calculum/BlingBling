@@ -1,21 +1,17 @@
-<nav class="">
+<nav class="navbar navbar-expand-sm navbar-dark bg-primary mb-3">
   <div class="container">
-    <a class="" href="/">BlingBling</a>
-    <button class="" type="button" data-toggle="collapse" data-target=""
-      aria-controls="" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <a class="navbar-brand" href="/">BlingBling</a>
 
-    <div class="" id="">
-      <ul class="">
-        <li class=">
-          <a class="" href="/">Home</a>
+    <div class="nav-content" id="">
+      <ul class="nav-list">
+        <li class="">
+          <a class="nav-link" href="/index">Home</a>
         </li>
-        <li class="nav-item">
+        <li class="">
           <a class="nav-link" href="/about">About</a>
         </li>
       </ul>
-      <ul class="navbar-nav ml-auto">
+      <ul class="side-nav">
         {{#if user}}
         <li class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbarDropDownMenuLink">Story Ideas</a>

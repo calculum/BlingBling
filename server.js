@@ -1,3 +1,5 @@
+'use strict';
+
 const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
@@ -9,8 +11,6 @@ const flash = require('connect-flash');
 const session = require('express-session');
 
 
-// const  usersRouter  = require('./models/Users');
-// const  blingRouter  = require('./models/Bling');
 
 const app = express();
 
@@ -37,6 +37,7 @@ app.use(function(req, res, next) {
 // Handlebars Middleware
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
+
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

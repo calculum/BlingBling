@@ -6,15 +6,15 @@ const { ensureAuthenticated } = require('./Authenticate/auth');
 
 // Load Models
 require('./models/Bling');
-const Bling = mongoose.model('bling');
+const Bling = mongoose.model('blings');
 
 // Bling index page
 router.get('/', ensureAuthenticated, (req, res) => {
   Bling.find({ user: req.user.id })
     .sort({ date: 'desc' })
-    .then(blings => {
+    .then(bling => {
       res.render('blings/index', {
-        blings
+        bling
       });
     });
 });

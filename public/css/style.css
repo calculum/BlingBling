@@ -11,3 +11,8 @@ body {
 #js-login-form {
     display: block;
 }
+
+.navbar {
+    width: 100%;
+    background-color: silver;
+}
