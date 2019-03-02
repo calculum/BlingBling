@@ -70,7 +70,7 @@ router.post('/', ensureAuthenticated, (req, res) => {
 
 // Edit form process -
 router.put('/:id', ensureAuthenticated, (req, res) => {
-  Blings.findOne({
+  Bling.findOne({
     _id: req.params.id
   }).then(bling => {
     // new values
@@ -85,7 +85,7 @@ router.put('/:id', ensureAuthenticated, (req, res) => {
 
 // Delete a bling
 router.delete('/:id', ensureAuthenticated, (req, res) => {
-  Blings.deleteOne({ _id: req.params.id }).then(() => {
+  Bling.deleteOne({ _id: req.params.id }).then(() => {
     res.redirect('/blings');
   });
 });
