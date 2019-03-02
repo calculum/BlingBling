@@ -21,6 +21,7 @@ const UsersRouter = require('./usersRouter');
 
 require('./config/passport')(passport);
 
+
 // CORS
 app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
@@ -93,8 +94,8 @@ app.get('/about', (req, res) => {
   res.render('about');
 });
 //-------------Routers
-app.use('/user', UsersRouter);
-app.use('/bling', BlingRouter);
+app.use('/users', UsersRouter);
+app.use('/blings', BlingRouter);
 
 // Server Setup
 let server;

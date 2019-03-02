@@ -6,12 +6,12 @@ const passport = require('passport');
 const router = express.Router();
 
 //  User Model
-require('./models/Users')
+require('./models/User')
 const User = mongoose.model('users');
 
 // Login Route
 router.get('/login', (req, res) => {
-  res.render('./views/users/login');
+  res.render('users/login');
 });
 
 // Register Route
@@ -48,8 +48,7 @@ router.post('/register', (req, res) => {
   } else {
     User.findOne({ email: req.body.email }).then(user => {
       if (user) {
-        req.send('error_msg', 'Email already exist.');
-        res.redirect('/users/register');
+        res.flash('error_msg', 'Email already exist.');
       } else {
         const newUser = new User({
           email: req.body.email,
@@ -62,7 +61,7 @@ router.post('/register', (req, res) => {
             newUser
               .save()
               .then(user => {
-                req.send('success_msg', 'Success! Please login below.');
+                res.failureFlash('success_msg', 'Success! Please login below.');
                 res.redirect('/users/login');
               })
               .catch(err => {
@@ -79,7 +78,7 @@ router.post('/register', (req, res) => {
 // Logout 
 router.get('/logout', (req, res) => {
   req.logout();
-  req.sent('success_msg', 'See you next time.');
+  res.flash('success_msg', 'See you next time.');
   res.redirect('/users/login');
 });
 
