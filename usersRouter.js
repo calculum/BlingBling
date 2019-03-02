@@ -41,6 +41,7 @@ router.post('/register', (req, res) => {
   if (errors.length > 0) {
     res.render('users/register', {
       errors,
+      name: req.body.name,
       email: req.body.email,
       password: req.body.password,
       password2: req.body.password2
@@ -48,9 +49,11 @@ router.post('/register', (req, res) => {
   } else {
     User.findOne({ email: req.body.email }).then(user => {
       if (user) {
-        res.flash('error_msg', 'Email already exist.');
+        req.flash('error_msg', 'Email already exist.');
+        res.redirect('/users/register');
       } else {
         const newUser = new User({
+          name: req.body.name,
           email: req.body.email,
           password: req.body.password
         });
@@ -61,7 +64,7 @@ router.post('/register', (req, res) => {
             newUser
               .save()
               .then(user => {
-                res.failureFlash('success_msg', 'Success! Please login below.');
+                req.Flash('success_msg', 'Success! Please login below.');
                 res.redirect('/users/login');
               })
               .catch(err => {
@@ -78,7 +81,7 @@ router.post('/register', (req, res) => {
 // Logout 
 router.get('/logout', (req, res) => {
   req.logout();
-  res.flash('success_msg', 'See you next time.');
+  req.flash('success_msg', 'See you next time.');
   res.redirect('/users/login');
 });
 

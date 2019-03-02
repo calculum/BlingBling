@@ -12,9 +12,9 @@ const Bling = mongoose.model('blings');
 router.get('/', ensureAuthenticated, (req, res) => {
   Bling.find({ user: req.user.id })
     .sort({ date: 'desc' })
-    .then(bling => {
+    .then(blings => {
       res.render('blings/index', {
-        bling
+        blings
       });
     });
 });
@@ -26,7 +26,7 @@ router.get('/add', ensureAuthenticated, (req, res) => {
 });
 
 // Edit Event Form
-router.get('/edit/:id', (req, res) => {
+router.get('/edit/:id', ensureAuthenticated, (req, res) => {
   Bling.findOne({
     _id: req.params.id
   }).then(bling => {
@@ -47,36 +47,35 @@ router.post('/', ensureAuthenticated, (req, res) => {
   if (!req.body.title) {
     errors.push({ text: 'Mark it down...' });
   }
-  if (!req.body.detail) {
+  if (!req.body.bling) {
     errors.push({ text: 'Please enter what in your mind....' });
   }
   if (errors.length > 0) {
     res.render('blings/add', {
       errors,
       title: req.body.title,
-      detail: req.body.detail
+      bling: req.body.bling
     });
   } else {
     const newUser = {
       title: req.body.title,
-      detail: req.body.detail,
+      bling: req.body.bling,
       user: req.user.id
     };
-    new bling(newUser).save().then(bling => {
+    new Bling(newUser).save().then(bling => {
       res.redirect('/blings');
     });
   }
 });
 
 // Edit form process -
-router.put('/:id', (req, res) => {
+router.put('/:id', ensureAuthenticated, (req, res) => {
   Blings.findOne({
     _id: req.params.id
   }).then(bling => {
     // new values
     bling.title = req.body.title;
-    bling.date = req.body.date;
-    bling.detail = req.body.detail;
+    bling.bling = req.body.bling;
     
     bling.save().then(bling => {
       res.redirect('/blings');
@@ -85,7 +84,7 @@ router.put('/:id', (req, res) => {
 });
 
 // Delete a bling
-router.delete('/:id', (req, res) => {
+router.delete('/:id', ensureAuthenticated, (req, res) => {
   Blings.deleteOne({ _id: req.params.id }).then(() => {
     res.redirect('/blings');
   });

@@ -2,16 +2,21 @@
   <div class="container">
     <a class="navbar-brand" href="/">BlingBling</a>
 
-    <div class="nav-content" id="">
-      <ul class="nav-list">
-        <li class="">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
           <a class="nav-link" href="/">Home</a>
         </li>
-        <li class="">
+        <li class="nav-item">
           <a class="nav-link" href="/about">About</a>
         </li>
       </ul>
-      <ul class="side-nav">
+      <ul class="navbar-nav ml-auto">
         {{#if user}}
         <li class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbarDropDownMenuLink">Panel</a>
