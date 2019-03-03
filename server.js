@@ -90,9 +90,6 @@ app.get('/', (req, res) => {
   });
 });
 
-app.get('/about', (req, res) => {
-  res.render('about');
-});
 //-------------Routers
 app.use('/users', UsersRouter);
 app.use('/blings', BlingRouter);

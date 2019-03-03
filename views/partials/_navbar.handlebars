@@ -7,27 +7,25 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="/">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/about">About</a>
-        </li>
-      </ul>
+    <div class="" id="navbarSupportedContent">
+
       <ul class="navbar-nav ml-auto">
         {{#if user}}
-        <li class="nav-item dropdown">
-          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbarDropDownMenuLink">Panel</a>
-          <div class="dropdown-menu">
+        <li class="">
+          <div>
+            <a href="/blings/add" class=""><i class="fas fa-plus"></i></a>
+          </div>
+        </li>
+        <li class="">
+          <div class="u">
             <a href="/blings" class="dropdown-item">Console</a>
-            <a href="/blings/add" class="dropdown-item">Bling</a>
           </div>
         </li>
         <li class="nav-item">
           <a href="/users/logout" class="nav-link">Logout</a>
         </li>
+        
+
         {{else}}
         <li class="nav-item">
           <a href="/users/login" class="nav-link">Login</a>
