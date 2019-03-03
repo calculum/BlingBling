@@ -86,6 +86,7 @@ mongoose.Promise = global.Promise;
 app.get('/', (req, res) => {
   res.render('index', {
     title: 'BlingBling',
+    style: 'main.css'
   });
 });
 
