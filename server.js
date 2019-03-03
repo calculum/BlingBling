@@ -84,9 +84,8 @@ mongoose.Promise = global.Promise;
 
 // -------------------Routes----------------
 app.get('/', (req, res) => {
-  const title = 'BlingBling';
   res.render('index', {
-    title
+    title: 'BlingBling',
   });
 });
 
