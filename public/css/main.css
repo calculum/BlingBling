@@ -16,3 +16,17 @@ body {
     width: 100%;
     background-color: silver;
 }
+
+li {
+    list-style: none;
+    display: inline;
+}
+
+ul {
+    list-style-type: none;
+}
+
+h3 {
+    font-weight: 300;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}

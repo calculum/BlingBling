@@ -11,7 +11,9 @@ const User = mongoose.model('users');
 
 // Login Route
 router.get('/login', (req, res) => {
-  res.render('users/login');
+  res.render('users/login', {
+    style: 'users.css'
+  });
 });
 
 // Register Route
