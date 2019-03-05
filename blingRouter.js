@@ -5,7 +5,7 @@ const { ensureAuthenticated } = require('./Authenticate/auth');
 
 
 // Load Models
-require('../BlingBling/models/Bling');
+require('../models/Bling');
 const Bling = mongoose.model('blings');
 
 // Bling index page
