@@ -14,7 +14,8 @@ router.get('/', ensureAuthenticated, (req, res) => {
     .sort({ date: 'desc' })
     .then(blings => {
       res.render('blings/index', {
-        blings
+        blings,
+        styles: 'blings.css'
       });
     });
 });
