@@ -63,7 +63,6 @@ app.use(session(sess));
 app.use(morgan('common'));
 
 app.use(express.static(path.join(__dirname, '/public')));
-app.use(express.static(path.join(__dirname, '/public/views')));
 
 
 //---------------Passport
