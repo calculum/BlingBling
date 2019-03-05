@@ -20,6 +20,8 @@ const { DATABASE_URL, PORT } = require('./config');
 const BlingRouter = require('./blingRouter');
 const UsersRouter = require('./usersRouter');
 
+
+
 require('./config/passport')(passport);
 
 
@@ -60,7 +62,8 @@ app.use(session(sess));
 // log the http layer
 app.use(morgan('common'));
 
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, '/public')));
+app.use(express.static(path.join(__dirname, '/public/views')));
 
 
 //---------------Passport
@@ -86,10 +89,13 @@ mongoose.Promise = global.Promise;
 // -------------------Routes----------------
 app.get('/', (req, res) => {
   res.render('index', {
-    title: 'BlingBling',
     style: 'main.css'
   });
 });
+
+app.get('/about', (req,res) => {
+  res.render('about');
+})
 
 //-------------Routers
 app.use('/users', UsersRouter);

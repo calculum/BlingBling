@@ -1,4 +1,4 @@
-<div class="card card-body">
+<div class="card card-body border-primary">
   <h3>Edit</h3>
   <form action="/blings/{{bling.id}}?_method=PUT" method="post">
     <input type="hidden" name="_method" value="PUT">
@@ -10,6 +10,6 @@
       <label for="bling">Bling</label>
       <textarea name="bling" class="form-control" value="{{bling.bling}}" required>{{bling.bling}}</textarea>
     </div>
-    <button type="submit" class="">Submit</button>
+    <button type="submit" class="btn btn-success">Submit</button>
   </form>
 </div>

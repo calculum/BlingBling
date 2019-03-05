@@ -1,12 +1,14 @@
 {{#each blings}}
-<div class="card card-body mb-2 col-md-4">
-  <h3>{{title}}</h3>
-  <p>{{bling}}</p>
-  <a href="/blings/edit/{{id}}" class="btn btn-dark btn-block mb-2">Edit</a>
-  <form action="/blings/{{id}}?_method=DELETE" method="POST">
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" class='btn btn-danger btn-block' value="Delete">
-  </form>
+<div class="d-flex justify-content-start">
+  <div class="card card-body mb-2 col-md-6 align-items-start border-primary">
+    <h3>{{title}}</h3>
+    <p>{{bling}}</p>
+    <a action="/blings/edit/{{id}}" class="btn btn-primary btn-block mb-2">Edit</a>
+    <form action="/blings/{{id}}?_method=DELETE" method="POST">
+      <input type="hidden" name="_method" value="DELETE">
+      <button type="submit" class="btn btn-success">DELETE</button>
+    </form>
+  </div>
 </div>
 {{else}}
 <p>No Blings listed</p>

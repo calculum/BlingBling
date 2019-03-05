@@ -1,40 +1,36 @@
-<nav class="navbar navbar-expand-sm navbar-dark bg-primary mb-3">
-  <div class="container">
-    <a class="navbar-brand" href="/">BlingBling</a>
-
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-3">
+  <a class="navbar-brand" href="/">BlingBling</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+      aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
-    <div class="" id="navbarSupportedContent">
-
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About</a>
+        </li>
+      </ul>
       <ul class="navbar-nav ml-auto">
         {{#if user}}
-        <li class="">
+        <li class="nav-item active">
           <div>
-            <a href="/blings/add" class=""><i class="fas fa-plus"></i></a>
+            <a href="/blings/add" class="nav-link"><i class="fas fa-plus"></i></a>
           </div>
         </li>
         <li class="">
-          <div class="u">
-            <a href="/blings" class="dropdown-item">Console</a>
+          <div class="nav-item">
+            <a href="/blings" class="nav-link">Console</a>
           </div>
         </li>
         <li class="nav-item">
           <a href="/users/logout" class="nav-link">Logout</a>
         </li>
-        
-
         {{else}}
         <li class="nav-item">
           <a href="/users/login" class="nav-link">Login</a>
         </li>
-        <li class="nav-item">
-          <a href="/users/register" class="nav-link">Register</a>
-        </li>
         {{/if}}
-      </ul>
+        </ul>
     </div>
   </div>
 </nav>

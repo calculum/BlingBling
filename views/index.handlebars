@@ -1,4 +1,28 @@
-<div class="jumbotron text-center">
-  <h3 class="display-3">{{title}}</h3>
-  <p class="lead">Mark down all the thoughts you have!</p>
+
+<div class="login-page">
+  <div class="form">
+    <form class="register-form" action="/users/register" method="POST">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" placeholder="Name" name="name" value="{{name}}" required>
+      <label for="email">Email</label>
+      <input type="email" class="form-control" placeholder="Enter email here" name="email" value="{{email}}" required>
+      <label for="password">Password</label>
+      <input type="password" class="form-control" placeholder="Enter password here" name="password" value="{{password}}" <label for="password">Confirm
+      Password</label>
+      <input type="password" class="form-control" placeholder="Re-enter password here" name="password2" value="{{password2}}" required>
+      <button>CREATE</button>
+
+      <p class="message">Already registered? <a href="#">Sign In</a></p>
+    </form>
+
+    <form class="login-form" action="/users/login" method="POST">
+      <label for="email">Email</label>
+          <input type="email" class="form-control" placeholder="Email" name="email" value="demo@demo.com" required>
+      <label for="password">Password</label>
+          <input type="password" class="form-control" placeholder="Enter password" name="password" value="123456" required>
+      <button>LOGIN</button>
+      <p class="message">Not registered? <a href="/users/register">Create an account</a></p>
+
+    </form>
+  </div>
 </div>

@@ -66,8 +66,8 @@ router.post('/register', (req, res) => {
             newUser
               .save()
               .then(user => {
-                req.Flash('success_msg', 'Success! Please login below.');
-                res.redirect('/users/login');
+                req.flash('success_msg', 'Success! Please login below.');
+                res.redirect('/');
               })
               .catch(err => {
                 console.log(err);
@@ -84,7 +84,7 @@ router.post('/register', (req, res) => {
 router.get('/logout', (req, res) => {
   req.logout();
   req.flash('success_msg', 'See you next time.');
-  res.redirect('/users/login');
+  res.redirect('/');
 });
 
 module.exports = router;
