@@ -67,7 +67,7 @@ router.post('/register', (req, res) => {
               .save()
               .then(user => {
                 req.flash('success_msg', 'Success! Please login below.');
-                res.redirect('/');
+                res.redirect('/blings');
               })
               .catch(err => {
                 console.log(err);
